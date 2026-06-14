@@ -120,6 +120,7 @@ export default function LeadGen() {
                       : "text-gray-400 hover:text-white"
                   }`}
                 >
+                  
                   <Send className="w-3.5 h-3.5" />
                   Quick Inquiry
                 </button>
