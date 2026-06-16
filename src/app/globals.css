@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme {
+  /* Semantic variables for themes */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-glass-border: var(--glass-border);
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-hover: var(--glass-hover);
+  
+  /* Aliasing old hardcoded colors to smooth the transition */
+  --color-bg-dark: var(--background);
+  
+  --color-neon-blue: #3b82f6;
+  --color-neon-purple: #8b5cf6;
+  --color-neon-cyan: #06b6d4;
+  --font-sans: var(--font-sora), var(--font-inter), sans-serif;
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-hover: rgba(241, 245, 249, 0.8);
+}
+
+.dark {
+  --background: #050816;
+  --foreground: #ffffff;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(10, 15, 30, 0.6);
+  --glass-hover: rgba(15, 23, 42, 0.8);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e1b4b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-panel-light {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: var(--glass-hover);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Neon glow texts & buttons */
+.text-glow-blue {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.glow-btn-blue {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+  transition: all 0.3s ease;
+}
+
+.glow-btn-blue:hover {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+  transform: scale(1.02);
+}
+
+.glow-btn-purple {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+  transition: all 0.3s ease;
+}
+
+.glow-btn-purple:hover {
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
+  transform: scale(1.02);
+}
+
+/* Animation helpers */
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: .6;
+    transform: scale(0.98);
+  }
+}
+
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Marquee infinite scrolling */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Timeline progress styles */
+.timeline-line {
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6, #06b6d4);
+}
+
+/* Form Styles */
+.glow-input {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.glow-input:focus {
+  background: var(--glass-hover);
+  border-color: #3b82f6;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+  outline: none;
+}
+
+
+
