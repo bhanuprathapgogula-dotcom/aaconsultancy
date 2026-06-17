@@ -160,14 +160,6 @@ export default function Contact() {
                   Get recruitment and staffing support for your company hiring needs. We deliver pre-vetted candidate matches across technical and non-technical domains.
                 </p>
               </div>
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfj5UQZ55I4WlmyN-8l7aFK5YAhlFwt0GVj3yyeTmdxBaq2Ww/viewform?usp=header"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glow-btn-blue relative shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple px-6 py-3 text-xs font-semibold text-white uppercase tracking-wider cursor-pointer"
-              >
-                Request Hiring Support
-              </a>
             </div>
 
             {/* Candidate Card */}
