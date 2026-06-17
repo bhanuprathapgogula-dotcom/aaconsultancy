@@ -51,10 +51,10 @@ export async function POST(req: Request) {
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true }, { status: 200 });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error sending email:', error);
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { error: 'Failed to send email', details: error?.message || String(error) },
       { status: 500 }
     );
   }
