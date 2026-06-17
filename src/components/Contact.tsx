@@ -25,9 +25,9 @@ export default function Contact() {
     {
       icon: <MapPin className="w-5 h-5 text-neon-cyan" />,
       title: "Office Location",
-      value: "Sundar Samriddhi hsg. Soc., Pune, India",
+      value: "Building No: 49-4-32B/3, Revenue Ward 1, Apace Hill View, Villa No. 06, Gunadala, Vijayawada, NTR District, Andhra Pradesh - 520004",
       desc: "Schedule a virtual or physical visit.",
-      href: "https://maps.google.com/?q=Sundar+Samriddhi+hsg.+Soc.+Pune+India",
+      href: "https://maps.google.com/?q=Building+No:49-4-32B/3,+Revenue+Ward+1,+Apace+Hill+View,+Villa+No.+06,+Gunadala,+Vijayawada,+NTR+District,+Andhra+Pradesh+-+520004",
     },
   ];
 
