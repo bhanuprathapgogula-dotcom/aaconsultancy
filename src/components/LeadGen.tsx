@@ -16,6 +16,7 @@ export default function LeadGen() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -44,17 +45,41 @@ export default function LeadGen() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate API delay
-    setTimeout(() => {
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: "Quick Hiring Inquiry",
+          message: formData.details,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.details || "Failed to send inquiry");
+      }
+
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: "", email: "", phone: "", details: "" });
-    }, 1500);
+    } catch (error: any) {
+      console.error(error);
+      setErrorMessage(error.message || "Something went wrong. Please try again later.");
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -126,6 +151,11 @@ export default function LeadGen() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {errorMessage && (
+                      <div className="p-3 bg-red-500/10 border border-red-500/50 rounded-lg text-red-500 text-xs font-semibold">
+                        {errorMessage}
+                      </div>
+                    )}
                     {/* Name Input */}
                     <div>
                       <input
